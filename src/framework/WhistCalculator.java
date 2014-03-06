@@ -1,10 +1,29 @@
 package framework;
 
+import java.util.List;
+
 public interface WhistCalculator {
 
-	public void roundEnded();
+	/**
+	 * Calling this should end the round and calculate the score.
+	 */
+	public void endRound(RoundResult result);
 	
+	/**
+	 * The players in the game
+	 * @return A list of players, participating in the current game
+	 */
 	public List<Player> getPlayers();
 	
+	/**
+	 * The players participating in the current round. If there are only players in the game, it will return the same as getPlayers().
+	 * @return A list of players, participating in the current round.
+	 */
+	public List<Player> getRoundPlayers();
 	
+	/**
+	 * Register listeners for when a score has been calculated etc...
+	 * @param listener a listener to be notified when something happens
+	 */
+	public void registerGameUpdateListener(GameUpdateListener listener);
 }
