@@ -10,13 +10,13 @@ import framework.enums.CardSuite;
 
 public class RoundResultImpl implements RoundResult {
 
-	private int tricks;
-	private CardSuite trumph;
-	private int melding;
-	private Addition addition;
-	private List<Player> winners;
-	private List<Player> callers;
-	private Map<String, String> extra;
+	private final int tricks;
+	private final CardSuite trumph;
+	private final int melding;
+	private final Addition addition;
+	private final List<Player> winners;
+	private final List<Player> callers;
+	private final Map<String, String> extra;
 	
 	
 	private RoundResultImpl(RoundResultBuilder builder) {

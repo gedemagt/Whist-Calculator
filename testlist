@@ -1,0 +1,6 @@
+Tests
+
+RoundResultImpl:
+ - Test the builder pattern used twice in a row
+ 
+ 
