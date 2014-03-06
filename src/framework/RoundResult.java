@@ -1,6 +1,7 @@
 package framework;
 
 import java.util.List;
+import java.util.Map;
 
 import framework.enums.Addition;
 import framework.enums.CardSuite;
@@ -46,4 +47,10 @@ public interface RoundResult {
 	 * @return a list of the callers
 	 */
 	public List<Player> getCallers();
+	
+	/**
+	 * A map of user defined extra values to be used in the score calculation
+	 * @return a map with key-value extra information, if such is needed.
+	 */
+	public Map<String, String> getExtra();
 }

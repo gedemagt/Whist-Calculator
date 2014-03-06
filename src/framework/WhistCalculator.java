@@ -2,6 +2,18 @@ package framework;
 
 import java.util.List;
 
+/**
+ * This interface is a facade into the game. It shall be possible to inject different score calculators and 
+ * history strategies.
+ * 
+ * This interface have the following responsibilities:
+ *  - Make sure the score is updated and the history strategy is informed at the end of the turn
+ *  - Keep track of the players currently playing, and currently waiting
+ *  - Notify listernes when a round has ended
+ * @author Jesper
+ *
+ */
+
 public interface WhistCalculator {
 
 	/**

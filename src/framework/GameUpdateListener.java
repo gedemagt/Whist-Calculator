@@ -2,6 +2,6 @@ package framework;
 
 public interface GameUpdateListener {
 
-	public void onGameUpdate();
+	public void onEndOfRound();
 	
 }
