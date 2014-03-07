@@ -17,10 +17,19 @@ import stubs.NullResult;
 public class WhistCalculatorTest {
 
 	private WhistCalculator calc;
+	int startBalance = 2;
 	
 	@Before
 	public void setup() {
-		calc = new WhistCalculatorImpl(new DoubleScoreCalculator());
+		
+		List<PlayerImpl> players = new ArrayList<PlayerImpl>();
+		players.add(new PlayerImpl("player1", startBalance));
+		players.add(new PlayerImpl("player2", startBalance));
+		players.add(new PlayerImpl("player3", startBalance));
+		players.add(new PlayerImpl("player4", startBalance));
+		players.add(new PlayerImpl("player5", startBalance));
+		players.add(new PlayerImpl("player6", startBalance));
+		calc = new WhistCalculatorImpl(new DoubleScoreCalculator(), players);
 	}
 	
 	@Test
@@ -33,20 +42,23 @@ public class WhistCalculatorTest {
 		
 	}
 	
+	boolean b = false;
 	@Test
 	public void shouldBeNotifiedAtTheEndOfTheRound() {
 		
+		calc.registerGameUpdateListener(new GameUpdateListener() {
+			
+			@Override
+			public void onEndOfRound() {
+				b = true;
+			}
+		});
+		calc.endRound(new NullResult());
+		assertTrue(b);
 	}
 	
 	@Test
 	public void shouldUpdateScoresAtEndOfRound() {
-		int startBalance = 2;
-		
-		List<Player> players = new ArrayList<Player>();
-		players.add(new PlayerImpl("player1", startBalance));
-		players.add(new PlayerImpl("player2", startBalance));
-		players.add(new PlayerImpl("player3", startBalance));
-		players.add(new PlayerImpl("player4", startBalance));
 		
 		calc.endRound(new NullResult());
 		for(int i=0; i<4; i++) {

@@ -16,9 +16,11 @@ public class WhistCalculatorImpl implements WhistCalculator {
 	private List<PlayerImpl> allPlayers;
 	private List<PlayerImpl> roundPlayers;
 	
-	public WhistCalculatorImpl(ScoreCalculator score) {
+	public WhistCalculatorImpl(ScoreCalculator score, List<PlayerImpl> players) {
 		listeners = new ArrayList<GameUpdateListener>();
 		allPlayers = new ArrayList<PlayerImpl>();
+		allPlayers.addAll(players);
+		roundPlayers = allPlayers.subList(0, 4);
 		this.score = score;
 	}
 	

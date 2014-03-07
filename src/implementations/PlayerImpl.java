@@ -10,7 +10,6 @@ public class PlayerImpl implements Player {
 	public PlayerImpl(String name, int balance) {
 		this.name = name;
 		this.balance = balance;
-		
 	}
 
 	@Override
