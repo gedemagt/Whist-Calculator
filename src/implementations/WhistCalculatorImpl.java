@@ -20,7 +20,10 @@ public class WhistCalculatorImpl implements WhistCalculator {
 		listeners = new ArrayList<GameUpdateListener>();
 		allPlayers = new ArrayList<PlayerImpl>();
 		allPlayers.addAll(players);
-		roundPlayers = allPlayers.subList(0, 4);
+		roundPlayers = new ArrayList<PlayerImpl>();
+		for(int i=0; i<4; i++) {
+			roundPlayers.add(allPlayers.get(i));
+		}
 		this.score = score;
 	}
 	
@@ -28,7 +31,17 @@ public class WhistCalculatorImpl implements WhistCalculator {
 	public void endRound(RoundResult result) {
 		int[] newScore = score.calculateScore(result, this);
 		setScores(newScore);
+		shiftCurrentPlayers();
 		notifyListeners();
+	}
+
+	private void shiftCurrentPlayers() {
+		PlayerImpl last = roundPlayers.get(3);
+		int indexInAllPlayers = allPlayers.indexOf(last);
+		int newRoundPlayerIndex = (indexInAllPlayers + 1) % allPlayers.size();
+		roundPlayers.remove(0);
+		PlayerImpl added = allPlayers.get(newRoundPlayerIndex);
+		roundPlayers.add(added);
 	}
 
 	@Override

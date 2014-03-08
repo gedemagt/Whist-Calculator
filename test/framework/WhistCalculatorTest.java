@@ -18,11 +18,12 @@ public class WhistCalculatorTest {
 
 	private WhistCalculator calc;
 	int startBalance = 2;
+	private List<PlayerImpl> players;
+	private RoundResult nullResult = new NullResult();
 	
 	@Before
 	public void setup() {
-		
-		List<PlayerImpl> players = new ArrayList<PlayerImpl>();
+		players = new ArrayList<PlayerImpl>();
 		players.add(new PlayerImpl("player1", startBalance));
 		players.add(new PlayerImpl("player2", startBalance));
 		players.add(new PlayerImpl("player3", startBalance));
@@ -34,12 +35,27 @@ public class WhistCalculatorTest {
 	
 	@Test
 	public void shouldGetListOfPlayers() {
-		
+		List<Player> p = calc.getPlayers();
+		for(int i=0; i<p.size(); i++) {
+			assertEquals(p.get(i), players.get(i));
+		}
 	}
 	
 	@Test
 	public void shouldGetListOfCurrentPlayers() {
-		
+		List<Player> p = calc.getRoundPlayers();
+		for(int i=0; i<4; i++) {
+			assertEquals(p.get(i), players.get(i));
+		}
+	}
+	
+	@Test
+	public void shouldShiftListOfCurrentPlayersAfterRound() {
+		calc.endRound(nullResult );
+		List<Player> p = calc.getRoundPlayers();
+		for(int i=0; i<4; i++) {
+			assertEquals(p.get(i).getName(), players.get(i+1).getName());
+		}
 	}
 	
 	boolean b = false;
@@ -60,7 +76,7 @@ public class WhistCalculatorTest {
 	@Test
 	public void shouldUpdateScoresAtEndOfRound() {
 		
-		calc.endRound(new NullResult());
+		calc.endRound(nullResult);
 		for(int i=0; i<4; i++) {
 			int currentBalance = calc.getPlayers().get(i).getBalance();
 			assertEquals(currentBalance, startBalance*2, 0);

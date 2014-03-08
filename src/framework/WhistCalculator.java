@@ -22,7 +22,8 @@ public interface WhistCalculator {
 	public void endRound(RoundResult result);
 	
 	/**
-	 * The players in the game
+	 * The players in the game. The order will be consistent throughout the game, and will 
+	 * always be the same as when the game started.
 	 * @return A list of players, participating in the current game
 	 */
 	public List<Player> getPlayers();
