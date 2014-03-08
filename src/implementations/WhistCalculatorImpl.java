@@ -31,7 +31,7 @@ public class WhistCalculatorImpl implements WhistCalculator {
 	public void endRound(RoundResult result) {
 		int[] newScore = score.calculateScore(result, this);
 		setScores(newScore);
-		shiftCurrentPlayers();
+		if(allPlayers.size() > 4) shiftCurrentPlayers();
 		notifyListeners();
 	}
 
