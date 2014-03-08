@@ -17,7 +17,7 @@ import stubs.NullResult;
 public class WhistCalculatorTest {
 
 	private WhistCalculator calc;
-	int startBalance = 2;
+	private int startBalance = 2;
 	private List<PlayerImpl> players;
 	private RoundResult nullResult = new NullResult();
 	

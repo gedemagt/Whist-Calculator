@@ -1,8 +1,5 @@
 Tests
 
-WhistCalculatorImpl
- - When the round ends, the current players should shift by one
-
 RoundResultImpl:
  - Test the builder pattern used twice in a row
  

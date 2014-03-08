@@ -1,10 +1,12 @@
-package framework;
+package implementations;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import framework.Player;
+import framework.RoundResult;
 import framework.enums.Addition;
 import framework.enums.CardSuite;
 
