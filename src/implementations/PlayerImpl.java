@@ -26,4 +26,9 @@ public class PlayerImpl implements Player {
 		this.balance = balance;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof PlayerImpl) return ((PlayerImpl) o).getName().equals(name);
+		else return false;
+	}
 }

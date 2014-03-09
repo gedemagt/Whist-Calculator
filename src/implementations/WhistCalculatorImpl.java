@@ -69,7 +69,7 @@ public class WhistCalculatorImpl implements WhistCalculator {
 		}
 	}
 	
-	private void setScores(int[] newScores) {
+	public void setScores(int[] newScores) {
 		for(int i=0; i<newScores.length; i++) {
 			roundPlayers.get(i).setBalance(newScores[i]);
 		}
