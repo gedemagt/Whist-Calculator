@@ -6,6 +6,7 @@ import implementations.SavedWhistCalculatorImpl;
 import org.junit.Before;
 import org.junit.Test;
 
+import stubs.NullResult;
 import stubs.SavedGameStub;
 
 public class SavedWhistCalculatorTest {
@@ -27,12 +28,33 @@ public class SavedWhistCalculatorTest {
 	
 	@Test
 	public void shouldRedoCorrectly() {
-		
+		int[] start = new int[6];
+		int[] end = new int[6];
+		calc.endRound(new NullResult());
+		for(int i=0; i<6; i++) {
+			start[i] = calc.getPlayers().get(i).getBalance();
+		}
+		calc.undo();
+		calc.redo();
+		for(int i=0; i<6; i++) {
+			end[i] = calc.getPlayers().get(i).getBalance();
+		}
+		assertArrayEquals(start, end);
 	}
 	
 	@Test
 	public void shouldUndoCorrectly() {
-		
+		int[] start = new int[6];
+		int[] end = new int[6];
+		for(int i=0; i<6; i++) {
+			start[i] = calc.getPlayers().get(i).getBalance();
+		}
+		calc.endRound(new NullResult());
+		calc.undo();
+		for(int i=0; i<6; i++) {
+			end[i] = calc.getPlayers().get(i).getBalance();
+		}
+		assertArrayEquals(start, end);
 	}
 	
 }

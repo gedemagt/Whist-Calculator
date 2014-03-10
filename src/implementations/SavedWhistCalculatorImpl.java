@@ -41,22 +41,25 @@ public class SavedWhistCalculatorImpl implements SavedWhistCalculator {
 
 	@Override
 	public void undo() {
-		c.setScores(game.undo());
+		c.setAllScores(game.undo());
 	}
 
 	@Override
 	public void redo() {
-		c.setScores(game.redo());
+		c.setAllScores(game.redo());
 	}
 
 	@Override
 	public void loadGame(SavedGame game) {
 		this.game = game;
 		List<PlayerImpl> p = new ArrayList<PlayerImpl>();
+		int[] startScore = new int[game.getPlayers().size()];
 		for(Player player : game.getPlayers()) {
 			p.add(new PlayerImpl(player.getName(), player.getBalance()));
+			startScore[game.getPlayers().indexOf(player)] = player.getBalance();
 		}
 		c = new WhistCalculatorImpl(game.getCalculator(), p);
+		game.addNewScores(startScore);
 	}
 
 

@@ -52,7 +52,6 @@ public class SavedGameStub implements SavedGame {
 		}
 		states.add(newScore);
 		currentState = states.size()-1;
-		
 	}
 
 }

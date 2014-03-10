@@ -30,7 +30,7 @@ public class WhistCalculatorImpl implements WhistCalculator {
 	@Override
 	public void endRound(RoundResult result) {
 		int[] newScore = score.calculateScore(result, this);
-		setScores(newScore);
+		setRoundScores(newScore);
 		if(allPlayers.size() > 4) shiftCurrentPlayers();
 		notifyListeners();
 	}
@@ -69,9 +69,15 @@ public class WhistCalculatorImpl implements WhistCalculator {
 		}
 	}
 	
-	public void setScores(int[] newScores) {
+	public void setRoundScores(int[] newScores) {
 		for(int i=0; i<newScores.length; i++) {
 			roundPlayers.get(i).setBalance(newScores[i]);
+		}
+	}
+	
+	public void setAllScores(int[] newScores) {
+		for(int i=0; i<newScores.length; i++) {
+			allPlayers.get(i).setBalance(newScores[i]);
 		}
 	}
 
