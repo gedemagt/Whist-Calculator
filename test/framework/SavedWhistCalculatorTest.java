@@ -1,6 +1,7 @@
 package framework;
 
 import static org.junit.Assert.*;
+
 import implementations.SavedWhistCalculatorImpl;
 
 import org.junit.Before;
@@ -24,6 +25,22 @@ public class SavedWhistCalculatorTest {
 	@Test
 	public void shouldLoadPlayersCorrectly() {
 		assertEquals(game.getPlayers(), calc.getPlayers());
+	}
+	
+	@Test
+	public void shouldUseCalculator() {
+		int[] target = new int[6];
+		int[] end = new int[6];
+		for(int i=0; i<6; i++) {
+			int j = calc.getPlayers().get(i).getBalance();
+			if(i<4) j *= 2;
+			target[i] = j;
+		}
+		calc.endRound(new NullResult());
+		for(int i=0; i<6; i++) {
+			end[i] = calc.getPlayers().get(i).getBalance();
+		}
+		assertArrayEquals(target, end);
 	}
 	
 	@Test
