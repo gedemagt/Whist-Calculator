@@ -21,8 +21,18 @@ public class SavedWhistCalculatorTest {
 	}
 	
 	@Test
-	public void shouldLoadGame() {
+	public void shouldLoadPlayersCorrectly() {
 		assertEquals(game.getPlayers(), calc.getPlayers());
+	}
+	
+	@Test
+	public void shouldRedoCorrectly() {
+		
+	}
+	
+	@Test
+	public void shouldUndoCorrectly() {
+		
 	}
 	
 }

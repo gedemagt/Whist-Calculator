@@ -21,13 +21,13 @@ public class SavedGameStub implements SavedGame {
 	}
 
 	@Override
-	public int[] getUndoState() {
+	public int[] undo() {
 		currentState--;
 		return states.get(currentState);
 	}
 
 	@Override
-	public int[] getRedoState() {
+	public int[] redo() {
 		currentState++;
 		return states.get(currentState);
 	}

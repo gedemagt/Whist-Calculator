@@ -41,12 +41,12 @@ public class SavedWhistCalculatorImpl implements SavedWhistCalculator {
 
 	@Override
 	public void undo() {
-		c.setScores(game.getUndoState());
+		c.setScores(game.undo());
 	}
 
 	@Override
 	public void redo() {
-		c.setScores(game.getRedoState());
+		c.setScores(game.redo());
 	}
 
 	@Override
